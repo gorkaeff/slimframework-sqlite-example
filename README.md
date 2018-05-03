@@ -5,4 +5,5 @@ Slim Framework 3 + Twig
 * php -S localhost:8080
 * composer require slim/slim "^3.0"
 * composer require slim/twig-view
-* composer dump-autoload-o
+* composer dump-autoload -o
+* composer require illuminate/database

@@ -6,11 +6,27 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $app = new \Slim\App([
 	'settings' => [
-		'displayErrorDetails' => 'true'
+		'displayErrorDetails' => true,
+		'db' => [
+			'driver' 	=> 'sqlite',
+			'database' 	=> __DIR__ . '/../slimBD.sqlite',
+			'prefix'	=> ''
+		]
 	]
 ]);
 
 $container = $app->getContainer();
+
+// setup illuminate (Model generator)
+$capsule = new Illuminate\Database\Capsule\Manager;
+$capsule->addConnection($container['settings']['db']);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+
+// add Illuminate package
+$container['db'] = function ($container) use ($capsule){
+	return $capsule;
+};
 
 $container['view'] = function ($container) {
 	$view = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
