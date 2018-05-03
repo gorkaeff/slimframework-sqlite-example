@@ -23,6 +23,10 @@ $capsule->addConnection($container['settings']['db']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
+$container['validator'] = function ($container) {
+	return new App\Validation\Validator;
+};
+
 // add Illuminate package
 $container['db'] = function ($container) use ($capsule){
 	return $capsule;
