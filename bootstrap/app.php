@@ -61,6 +61,7 @@ $container['csrf'] = function ($container) {
 
 $app->add(new \App\Middelware\ValidationErrorsMiddelware($container));
 $app->add(new \App\Middelware\OldInputMiddelware($container));
+$app->add(new \App\Middelware\CsrfViewMiddelware($container));
 $app->add($container->csrf);
 
 // setup custom rules
