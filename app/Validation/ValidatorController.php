@@ -9,7 +9,7 @@ class ValidatorController
 {
 	protected $errors;
 
-	public function validateParams($request, array $rules)
+	public function validate($request, array $rules)
 	{
 		foreach ($rules as $field => $rule) {
 			try {

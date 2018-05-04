@@ -1,5 +1,7 @@
 <?php
 
+use Respect\Validation\Validator as v;
+
 session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -55,5 +57,8 @@ $container['AuthController'] = function ($container){
 
 $app->add(new \App\Middelware\ValidationErrorsMiddelware($container));
 $app->add(new \App\Middelware\OldInputMiddelware($container));
+
+// setup custom rules
+v::with('App\\Validation\\Rules\\');
 
 require __DIR__ . '/../app/routes.php';
