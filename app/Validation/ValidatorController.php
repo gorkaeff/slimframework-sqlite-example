@@ -5,11 +5,11 @@ namespace App\Validation;
 use Respect\Validation\Validator as Respect;
 use Respect\Validation\Exceptions\NestedValidationException;
 
-class Validator
+class ValidatorController
 {
 	protected $errors;
 
-	public function validate($request, array $rules)
+	public function validateParams($request, array $rules)
 	{
 		foreach ($rules as $field => $rule) {
 			try {
