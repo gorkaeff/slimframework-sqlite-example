@@ -54,5 +54,6 @@ $container['AuthController'] = function ($container){
 };
 
 $app->add(new \App\Middelware\ValidationErrorsMiddelware($container));
+$app->add(new \App\Middelware\OldInputMiddelware($container));
 
 require __DIR__ . '/../app/routes.php';
