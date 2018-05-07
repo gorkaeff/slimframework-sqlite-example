@@ -9,6 +9,7 @@ Slim Framework 3 + Twig + Illuminate + sqlite + jQuery + Bootstrap
 * composer require illuminate/database
 * composer require respect/validation
 * composer require slim/csrf
+* composer require slim/flash
 
 # Table sqlite
 * CREATE TABLE "users" ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, `name` VARCHAR ( 255 ) NOT NULL, `password` VARCHAR ( 255 ) NOT NULL, `email` VARCHAR(255) NOT NULL, `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP )
