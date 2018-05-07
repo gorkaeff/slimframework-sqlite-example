@@ -1,16 +1,19 @@
 <?php
 
 use App\Middelware\AuthMiddelware;
+use App\Middelware\GuestMiddelware;
 
 $app->get('/', 'HomeController:index')->setName('home');
 
-// signup routes
-$app->get('/auth/signup', 'AuthController:getSignUp')->setName('auth.signup');
-$app->post('/auth/signup', 'AuthController:postSignUp');
+$app->group('', function(){
+	// signup routes
+	$this->get('/auth/signup', 'AuthController:getSignUp')->setName('auth.signup');
+	$this->post('/auth/signup', 'AuthController:postSignUp');
 
-// signin routes
-$app->get('/auth/signin', 'AuthController:getSignIn')->setName('auth.signin');
-$app->post('/auth/signin', 'AuthController:postSignIn');
+	// signin routes
+	$this->get('/auth/signin', 'AuthController:getSignIn')->setName('auth.signin');
+	$this->post('/auth/signin', 'AuthController:postSignIn');
+})->add(new GuestMiddelware($container));
 
 $app->group('', function(){
 	// signout
