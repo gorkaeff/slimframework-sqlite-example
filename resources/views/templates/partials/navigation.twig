@@ -23,7 +23,7 @@
 							{{ auth.user.name }} <b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Change Password</a></li>
+							<li><a href="{{ path_for('auth.password.change') }}">Change Password</a></li>
 							<li><a href="{{ path_for('auth.signout') }}">Sign Out</a></li>
 						</ul>
 					</li>
