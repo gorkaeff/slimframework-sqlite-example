@@ -66,6 +66,10 @@ $container['HomeController'] = function ($container){
 	return new \App\Controllers\HomeController($container);
 };
 
+$container['TaskController'] = function ($container){
+	return new \App\Controllers\Task\TaskController($container);
+};
+
 $container['AuthController'] = function ($container){
 	return new \App\Controllers\Auth\AuthController($container);
 };

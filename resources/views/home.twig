@@ -2,6 +2,19 @@
 
 {% block content %}
 
-	Homeeee
-	
+	<div class="jumbotron">
+		<h1 class="display-4">Welcome! 
+			{% if auth.check %} 
+				{{ auth.user.name }} 
+			{% endif %}
+		</h1>
+		<p class="lead">This is an example with Slim Framework and sqlite database (user & task tables)</p>
+		{% if not(auth.check) %}
+			<hr class="my-4">
+			<p>Try demo!</p>
+			<a class="btn btn-primary btn-lg" href="{{ path_for('auth.signin') }}"role="button">Sign in</a>
+			<a class="btn btn-primary btn-lg" href="{{ path_for('auth.signup') }}" role="button">Sign up</a>
+		{% endif %}
+	</div>
+
 {% endblock %}

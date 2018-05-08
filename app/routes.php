@@ -23,3 +23,7 @@ $app->group('', function(){
 	$this->get('/auth/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');
 	$this->post('/auth/password/change', 'PasswordController:postChangePassword');
 })->add(new AuthMiddelware($container));
+
+$app->group('/tasks', function(){
+	$this->get('/', 'TaskController:index')->setName('tasks.index');
+})->add(new AuthMiddelware($container));

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Task;
 
 class User extends Model
 {
@@ -16,4 +17,9 @@ class User extends Model
 			'password' => password_hash($password, PASSWORD_DEFAULT)
 		]);
 	}
+
+	public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }

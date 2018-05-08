@@ -1,0 +1,26 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Task</th>
+				<th scope="col">Completed</th>
+				<th scope="col">Created At</th>
+				<th scope="col">Updated At</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for task in auth.user.tasks %}
+				<tr>
+					<td>{{ task.name }}</td>
+					<td>{{ task.completed }}</td>
+					<td>{{ task.created_at }}</td>
+					<td>{{ task.updated_at }}</td>
+				<tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+{% endblock %}
