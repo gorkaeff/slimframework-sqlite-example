@@ -12,7 +12,7 @@
 		{% if not(auth.check) %}
 			<hr class="my-4">
 			<p>Try demo!</p>
-			<a class="btn btn-primary btn-lg" href="{{ path_for('auth.signin') }}"role="button">Sign in</a>
+			<a class="btn btn-primary btn-lg" href="{{ path_for('auth.signin') }}" role="button">Sign in</a>
 			<a class="btn btn-primary btn-lg" href="{{ path_for('auth.signup') }}" role="button">Sign up</a>
 		{% endif %}
 	</div>
