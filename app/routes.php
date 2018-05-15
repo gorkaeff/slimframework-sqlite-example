@@ -33,3 +33,8 @@ $app->group('/tasks', function(){
 	$this->put('/{id}', 'TaskController:update')->setName('tasks.update');
 	$this->delete('/{id}', 'TaskController:destroy')->setName('tasks.destroy');
 })->add(new AuthMiddelware($container));
+
+$app->group('/api', function(){
+	$this->get('/token', 'ApiController:getToken');
+	$this->get('/me', 'ApiController:me');
+});

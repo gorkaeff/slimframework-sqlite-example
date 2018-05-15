@@ -70,6 +70,10 @@ $container['TaskController'] = function ($container){
 	return new \App\Controllers\Task\TaskController($container);
 };
 
+$container['ApiController'] = function ($container){
+	return new \App\Controllers\Api\ApiController($container);
+};
+
 $container['AuthController'] = function ($container){
 	return new \App\Controllers\Auth\AuthController($container);
 };
@@ -86,6 +90,16 @@ $app->add(new \App\Middelware\ValidationErrorsMiddelware($container));
 $app->add(new \App\Middelware\OldInputMiddelware($container));
 $app->add(new \App\Middelware\CsrfViewMiddelware($container));
 $app->add($container->csrf);
+
+
+//protected /api with jwt
+$app->add(new Tuupola\Middleware\JwtAuthentication([
+	"path" => "/api",
+	"ignore" => ["/api/token"],
+	"secure" => true,
+    "relaxed" => ["localhost"],
+	"secret" => "supersecretkeyyoushouldnotcommittogithub"
+]));
 
 // setup custom rules
 v::with('App\\Validation\\Rules\\');
