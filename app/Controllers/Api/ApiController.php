@@ -24,14 +24,27 @@ class ApiController extends Controller
 		$user = User::where('email', $emailParameter)->first();
 
 		//create unique payload with secret key to obtain valid and unique token
+
+    	//iat - Issued at
+    	//exp - expiration time
+    	//jti - JWT ID
+    	//sub - subjet
+    	$now = new \DateTime();
+		$future = new \DateTime("now +2 hours");
+		//$jti = random_bytes(8);
+		//$server = $request->getServerParams();
 		$payload = [
+			"iat" => $now->getTimeStamp(),
+        	"exp" => $future->getTimeStamp(),
+        	//"jti" => $jti,
+        	//"sub" => $server["PHP_AUTH_USER"],
 	        "id" => $user->id,
 	        "email" => $user->email
 	    ];
     	$secret = "supersecretkeyyoushouldnotcommittogithub";
 
     	//generate TOKEN and return
-    	$token = JWT::encode($payload, $secret);
+    	$token = JWT::encode($payload, $secret, "HS256");
     	return $response->withJson($token);
 	}
 

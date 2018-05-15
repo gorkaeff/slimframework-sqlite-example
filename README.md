@@ -1,5 +1,5 @@
 # slimframework-sqlite-example
-Slim Framework 3 + Twig + Illuminate + sqlite + jQuery + Bootstrap + Authentication User AND Task Model
+Slim Framework 3 + Twig + Illuminate + sqlite + jQuery + Bootstrap + Authentication User AND Task Model + API with JWT token
 
 # Some important steps to execute in console
 * php -S localhost:8080
