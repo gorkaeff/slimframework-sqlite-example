@@ -21,10 +21,14 @@
 						<td>{{ task.created_at }}</td>
 						<td>{{ task.updated_at }}</td>
 						<td>
-							<a class="btn btn-primary" href="{{ path_for('tasks.edit', { 'id': task.id }) }}" role="button">Edit</a>
-							<a class="btn btn-danger" href="{{ path_for('tasks.create') }}" role="button">Delete</a>
+							<form action="{{ path_for('tasks.destroy', {'id': task.id}) }}" method="POST" class="form-inline">
+								<input type="hidden" name="_METHOD" value="DELETE"/>
+								<a class="btn btn-primary" href="{{ path_for('tasks.edit', { 'id': task.id }) }}" role="button">Edit</a>
+								<button class="btn btn-danger" type="submit">Delete</button>
+								{{ csrf.field | raw }}
+							</form>
 						</td>
-					<tr>
+					</tr>
 				{% endfor %}
 			</tbody>
 		</table>

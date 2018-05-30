@@ -61,6 +61,12 @@ class TaskController extends Controller
 
 	public function destroy($request, $response)
 	{
-		return "Destroy TASK";
+		$isTaskUser = Task::isTaskUser($request->getAttribute(id), $_SESSION['user']);
+		if ($isTaskUser){
+			Task::destroy($request->getAttribute(id));
+			$this->flash->addMessage('info', 'Task deleted!!!');
+			return $response->withRedirect($this->router->pathFor('tasks.index'));
+		}
+		return $response->withRedirect($this->router->pathFor('home'));
 	}
 }
