@@ -38,19 +38,25 @@ class TaskController extends Controller
 		return $response->withRedirect($this->router->pathFor('tasks.index'));
 	}
 
-	public function show($request, $response)
-	{
-		return "Show TASK";
-	}
-
 	public function edit($request, $response)
 	{
-		return "Edit TASK";
+		$isTaskUser = Task::isTaskUser($request->getAttribute(id), $_SESSION['user']);
+		if ($isTaskUser){
+			$data = [];
+			$data['task'] = Task::find($request->getAttribute(id));
+			return $this->view->render($response, 'task/edit.twig', ["data" => $data]);
+		}
+		return $response->withRedirect($this->router->pathFor('home'));
 	}
 
 	public function update($request, $response)
 	{
-		return "Update TASK";
+		$task = Task::find($request->getAttribute(id));
+		$task->name = $request->getParam('name');
+		$task->completed = $request->getParam('completed');
+		$task->save();
+		$this->flash->addMessage('info', 'Task updated!!!');
+		return $response->withRedirect($this->router->pathFor('tasks.index'));
 	}
 
 	public function destroy($request, $response)

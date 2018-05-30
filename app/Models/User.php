@@ -9,7 +9,7 @@ class User extends Model
 {
 	//protected $table = 'the name of the table if is not - users -  called';
 
-	protected $fillable = ['email', 'name', 'password'];
+	protected $fillable = ['id', 'email', 'name', 'password'];
 
 	public function setPassword ($password)
 	{

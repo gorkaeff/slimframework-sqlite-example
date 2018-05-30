@@ -20,7 +20,10 @@
 						<td>{{ task.completed }}</td>
 						<td>{{ task.created_at }}</td>
 						<td>{{ task.updated_at }}</td>
-						<td>Edit / Delete</td>
+						<td>
+							<a class="btn btn-primary" href="{{ path_for('tasks.edit', { 'id': task.id }) }}" role="button">Edit</a>
+							<a class="btn btn-danger" href="{{ path_for('tasks.create') }}" role="button">Delete</a>
+						</td>
 					<tr>
 				{% endfor %}
 			</tbody>

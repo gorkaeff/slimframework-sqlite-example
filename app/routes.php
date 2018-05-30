@@ -28,7 +28,6 @@ $app->group('/tasks', function(){
 	$this->get('', 'TaskController:index')->setName('tasks.index');
 	$this->get('/create', 'TaskController:create')->setName('tasks.create');
 	$this->post('', 'TaskController:store')->setName('tasks.store');
-	$this->get('/{id}', 'TaskController:show')->setName('tasks.show');
 	$this->get('/{id}/edit', 'TaskController:edit')->setName('tasks.edit');
 	$this->put('/{id}', 'TaskController:update')->setName('tasks.update');
 	$this->delete('/{id}', 'TaskController:destroy')->setName('tasks.destroy');
