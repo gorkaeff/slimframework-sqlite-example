@@ -1,7 +1,7 @@
 {% extends 'templates/app.twig' %}
 
 {% block content %}
-
+	<a class="btn btn-info" href="{{ path_for('tasks.create') }}" role="button">Create new task</a>
 	{% if data.tasks.count > 0 %}
 		<table class="table">
 			<thead>
@@ -10,6 +10,7 @@
 					<th scope="col">Completed</th>
 					<th scope="col">Created At</th>
 					<th scope="col">Updated At</th>
+					<th scope="col">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -19,6 +20,7 @@
 						<td>{{ task.completed }}</td>
 						<td>{{ task.created_at }}</td>
 						<td>{{ task.updated_at }}</td>
+						<td>Edit / Delete</td>
 					<tr>
 				{% endfor %}
 			</tbody>

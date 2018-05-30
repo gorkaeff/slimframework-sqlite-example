@@ -4,6 +4,7 @@ namespace App\Controllers\Task;
 
 use App\Controllers\Controller;
 use App\Models\User;
+use App\Models\Task;
 
 class TaskController extends Controller
 {
@@ -20,12 +21,21 @@ class TaskController extends Controller
 
 	public function create($request, $response)
 	{
-		return "Create TASK";
+		return $this->view->render($response, 'task/create.twig');
 	}
 
 	public function store($request, $response)
 	{
-		return "Store TASK";
+
+		$task = Task::create([
+			'name' => $request->getParam('name'),
+			'completed' => $request->getParam('completed'),
+			'user_id' => $_SESSION['user']
+		]);
+
+		$this->flash->addMessage('info', 'Task stored!!!');
+
+		return $response->withRedirect($this->router->pathFor('tasks.index'));
 	}
 
 	public function show($request, $response)
